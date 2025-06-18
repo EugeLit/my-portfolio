@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Eugenia</title>
+        <style>
+            :root {
+                --bg-light: #f5f5f5;
+                --text-light: #222;
+                --bg-dark: #121212;
+                --text-dark: #eee;
+                --primary-color: #4a90e2;
+                --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            .fade-in {
+                opacity: 0;
+                transform: translateY(20px);
+                animation: fadeIn 0.8s ease-out forwards;
+            }
+            @keyframes fadeIn {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            body {
+                background: linear-gradient(135deg, #fdfbfb, #97d2f0);
+                display: flex;
+                justify-content: center; 
+                align-items: center;
+                min-height: 100vh;  
+                margin: 0;
+                font-family: var(--font-family);
+                color: var(--text-light);
+                transition: background-color 0.3s, color 0.3s;
+                flex-direction: column;
+            }
+            body.dark {
+                background: linear-gradient(135deg, #55535c, #2a2a2a);
+                color: var(--text-dark);
+            }
+            body.dark .container {
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); /* тёмная тема - светлая тень */
+            }
+            .container {
+                width: 90vw;
+                max-width: 900px;
+                border-radius: 10px;
+                padding: 30px;
+                box-shadow: 0 0 15px var(--bg-dark);
+                box-sizing: border-box;
+                transition: box-shadow 0.3s;
+                transition:0.5s;
+            }
+            .container:hover{
+                transform:scale(1.03);
+                transition:0.5s;
+            }
+            header {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            header h1 {
+                margin: 0;
+                font-size: 2.8rem;
+                color: var(--primary-color);
+            }
+            header p {
+                font-size: 1.2rem;
+                margin: 5px 0 0;
+            } 
+            header img {
+                box-shadow: 0 4px 10px var(--bg-dark);
+                transition: box-shadow 0.3s;
+            }
+            body.dark header img {
+                box-shadow: 0 4px 15px var(--bg-light);
+            }
+            section {
+                margin-bottom: 30px;
+            }
+            h2 {
+                border-bottom: 2px solid var(--primary-color);
+                padding-bottom: 5px;
+                margin-bottom: 15px;
+            }
+            ul.skills-list {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            ul.skills-list li {
+                background-color: var(--primary-color);
+                color: white;
+                padding: 7px 15px;
+                border-radius: 20px;
+                font-weight: 600;
+                font-size: 0.9rem;
+            }
+            .contacts a {
+                color: var(--primary-color);
+                text-decoration: none;
+                margin-right: 15px;
+                font-weight: 600;
+            }
+            .contacts a:hover {
+                text-decoration: underline;
+            }
+            .theme-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--primary-color);
+                border: none;
+                padding: 10px 15px;
+                border-radius: 20px;
+                color: white;
+                cursor: pointer;
+                font-weight: 600;
+                font-size: 0.9rem;
+                user-select: none;
+                transition: background-color 0.3s;
+            }
+            .theme-toggle:hover {
+                background: #357abd;
+            }
+            @media (max-width: 480px) {
+                header h1 {
+                    font-size: 2rem;
+                }
+                ul.skills-list {
+                    justify-content: center;
+                }
+            }
+        </style>
+    </head>
+    <body class="fade-in">
+        <button class="theme-toggle" id="toggleTheme">Dark theme</button>
+        <div class="container">
+            <header>
+                <img src="1.jpg" alt="Photo Eugenia" style="width:150px; height:150px; border-radius:50%; object-fit:cover; margin-bottom:15px;;">
+                <img src="2.JPG" alt="Photo Eugenia" style="width:150px; height:150px; border-radius:50%; object-fit:cover; margin-bottom:15px;">
+                <h1>Eugenia</h1>
+                <p>Frontend developer with practical experience in HTML, CSS, JavaScript, and basic knowledge of .NET. Skilled in turning Figma designs into responsive websites. Always eager to improve and take on new challenges.</p>
+            </header>
+
+            <section>
+                <h2>Skills</h2>
+                <ul class="skills-list">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Python</li>
+                    <li>Figma</li>
+                    <li>.NET (C++ and C#)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Contacts</h2>
+                <div class="contacts">
+                    <a href="mailto:pipupap314@gmail.com">pipupap312@gmail.com</a>
+                    <a href="https://t.me/HAHAHA3121" target="_blank">Telegram @HAHAHA3121</a>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <p>&copy; <span id="year"></span> Eugenia</p>
+        </footer>
+
+        <script>
+            const toggleBtn = document.getElementById('toggleTheme');
+            toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            if (document.body.classList.contains('dark')) 
+            {
+                toggleBtn.textContent = 'Light theme';
+            }
+            else 
+            {
+                toggleBtn.textContent = 'Dark theme';
+            }
+            });
+            document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
+    </body>
+</html>
